@@ -1,4 +1,8 @@
+package view;
 
+
+import model.ProdutosDTO;
+import model.ProdutosDAO;
 import java.util.ArrayList;
 import javax.swing.table.DefaultTableModel;
 

@@ -1,5 +1,6 @@
 package view;
 
+import javax.swing.JOptionPane;
 import model.ProdutosDTO;
 import model.ProdutosDAO;
 import model.conectaDAO;
@@ -160,6 +161,7 @@ public class cadastroVIEW extends javax.swing.JFrame {
     }//GEN-LAST:event_cadastroNomeActionPerformed
 
     private void btnCadastrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCadastrarActionPerformed
+try{
         ProdutosDTO produto = new ProdutosDTO();
         String nome = cadastroNome.getText();
         String valor = cadastroValor.getText();
@@ -169,7 +171,10 @@ public class cadastroVIEW extends javax.swing.JFrame {
         produto.setStatus(status);
         ProdutosDAO produtodao = new ProdutosDAO();
         produtodao.cadastrarProduto(produto);
-        
+        JOptionPane.showMessageDialog(null,"Sucesso ao cadastral produto! \n Clique em salvar para salvar informações no banco de dados!");
+} catch (NumberFormatException iu) {
+            JOptionPane.showMessageDialog(null,"Erro ao salvar dado no banco de dados: \n DIGITE APENAS NUMEROS NO CAMPO VALOR \n Código de erro:" + iu.getMessage());
+        }    
     }//GEN-LAST:event_btnCadastrarActionPerformed
 
     private void btnProdutosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProdutosActionPerformed

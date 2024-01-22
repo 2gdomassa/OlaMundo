@@ -35,7 +35,7 @@ public class ProdutosDAO {
     try {
         conectaDAO.conn=conectaDAO.connectDB();
         System.out.println("conectou");
-        String sql = "UPDATE tabela SET status='Vendido' WHERE id=?";
+        String sql = "UPDATE produtos SET status='Vendido' WHERE id=?";
         System.out.println("deu update");
         PreparedStatement preparedStatement = conectaDAO.conn.prepareStatement(sql);
         preparedStatement.setInt(1, idProduto);
@@ -61,7 +61,7 @@ static public void filtraItens(JTable par) {
         java.sql.ResultSet rs;
 
         // Ajuste na consulta SQL para buscar apenas os itens com status "Vendido"
-        pstm = conectaDAO.conn.prepareStatement("SELECT * FROM tabela WHERE status = 'Vendido'");
+        pstm = conectaDAO.conn.prepareStatement("SELECT * FROM produtos WHERE status = 'Vendido'");
         rs = pstm.executeQuery();
 
         while (rs.next()) {

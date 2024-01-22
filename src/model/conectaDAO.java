@@ -20,7 +20,7 @@ public  class conectaDAO {
                 
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ihms", "root", "esquecido140!");   
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ihmys", "root", "esquecido140!");   
         }
        
                 catch (ClassNotFoundException ex) {
@@ -38,7 +38,7 @@ public  class conectaDAO {
     public void adicionarRegistro(ProdutosDTO parametro) {
         try {
             connectDB();
-            String sql = "insert into tabela (nome,valor,status) values (?, ?, ?)";        
+            String sql = "insert into produtos (nome,valor,status) values (?, ?, ?)";        
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, parametro.getNome());
             preparedStatement.setDouble(2, parametro.getValor());
@@ -60,7 +60,7 @@ public  class conectaDAO {
                connectDB();
                PreparedStatement pstm;
                ResultSet rs;
-               pstm=conn.prepareStatement("select * from tabela;");
+               pstm=conn.prepareStatement("select * from produtos;");
                rs=pstm.executeQuery();
                while(rs.next()){
                   pro.addRow(new Object[]{

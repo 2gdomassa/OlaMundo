@@ -141,11 +141,11 @@ conectaDAO teste = new conectaDAO();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnVenderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnVenderActionPerformed
-      //  String id = id_produto_venda.getText();
-        JOptionPane.showMessageDialog(null,"Botao ainda não implementado! ");
-       // ProdutosDAO produtosdao = new ProdutosDAO();
-        
-        //produtosdao.venderProduto(Integer.parseInt(id));
+      String id = id_produto_venda.getText();
+     
+      ProdutosDAO produtosdao = new ProdutosDAO();
+      produtosdao.vendeProduto(Integer.parseInt(id));
+      teste.carregaTabela(listaProdutos);
       //  listarProdutos();
     }//GEN-LAST:event_btnVenderActionPerformed
 

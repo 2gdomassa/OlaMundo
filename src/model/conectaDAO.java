@@ -14,9 +14,9 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-public class conectaDAO {
-    Connection conn = null;
-    public Connection connectDB(){
+public  class conectaDAO {
+    static Connection conn = null;
+    static public Connection connectDB(){
                 
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
@@ -53,7 +53,7 @@ public class conectaDAO {
         }
     }
     
-     public void carregaTabela(JTable par){
+    static public void carregaTabela(JTable par){
                try{
                DefaultTableModel pro = (DefaultTableModel)par.getModel();
                pro.setNumRows(0);
@@ -78,7 +78,7 @@ public class conectaDAO {
                
            }
     
-      public void desconectar() {
+     static public void desconectar() {
         try {
             if (conn != null) {
                 conn.close();         
@@ -88,4 +88,5 @@ public class conectaDAO {
         }
     }
     
+
 }

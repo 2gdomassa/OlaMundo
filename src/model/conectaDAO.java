@@ -14,13 +14,13 @@ import javax.swing.table.DefaultTableModel;
 
 
 
-public class conectaDAO {
-    Connection conn = null;
-    public Connection connectDB(){
+public  class conectaDAO {
+    static Connection conn = null;
+    static public Connection connectDB(){
                 
          try {
             Class.forName("com.mysql.cj.jdbc.Driver");
-            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ihms", "root", "esquecido140!");   
+            conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/ihmys", "root", "esquecido140!");   
         }
        
                 catch (ClassNotFoundException ex) {
@@ -38,7 +38,7 @@ public class conectaDAO {
     public void adicionarRegistro(ProdutosDTO parametro) {
         try {
             connectDB();
-            String sql = "insert into tabela (nome,valor,status) values (?, ?, ?)";        
+            String sql = "insert into produtos (nome,valor,status) values (?, ?, ?)";        
             PreparedStatement preparedStatement = conn.prepareStatement(sql);
             preparedStatement.setString(1, parametro.getNome());
             preparedStatement.setDouble(2, parametro.getValor());
@@ -53,14 +53,14 @@ public class conectaDAO {
         }
     }
     
-     public void carregaTabela(JTable par){
+    static public void carregaTabela(JTable par){
                try{
                DefaultTableModel pro = (DefaultTableModel)par.getModel();
                pro.setNumRows(0);
                connectDB();
                PreparedStatement pstm;
                ResultSet rs;
-               pstm=conn.prepareStatement("select * from tabela;");
+               pstm=conn.prepareStatement("select * from produtos;");
                rs=pstm.executeQuery();
                while(rs.next()){
                   pro.addRow(new Object[]{
@@ -78,7 +78,7 @@ public class conectaDAO {
                
            }
     
-      public void desconectar() {
+     static public void desconectar() {
         try {
             if (conn != null) {
                 conn.close();         
@@ -88,4 +88,5 @@ public class conectaDAO {
         }
     }
     
+
 }
